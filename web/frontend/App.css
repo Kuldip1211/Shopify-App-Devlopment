@@ -1,0 +1,29 @@
+/* Full layout: sidebar + content */
+.main-section {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100%;
+  background: #f9fafb;
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
+
+/* Sidebar container */
+.main-menu {
+  width: 80px;
+  min-width: 80px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 24px;
+  background: #f9fafb;
+  overflow-y: auto;
+  box-sizing: border-box;
+}

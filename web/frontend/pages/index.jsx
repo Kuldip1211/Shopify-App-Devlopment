@@ -1,0 +1,13 @@
+import {
+  Page,
+} from "@shopify/polaris";
+
+
+
+export default function HomePage() {
+  return (
+    <Page>
+      Home page
+    </Page>
+  );
+}
