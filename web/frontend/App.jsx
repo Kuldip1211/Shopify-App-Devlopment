@@ -4,7 +4,7 @@ import { NavMenu } from "@shopify/app-bridge-react";
 import Routes from "./Routes";
 import "./App.css";
 
-import { QueryProvider, PolarisProvider, Navigation } from "./components";
+import { QueryProvider, PolarisProvider, Navigation, TopBar  } from "./components";
 
 export default function App() {
   const pages = import.meta.glob("./pages/**/!(*.test.[jt]sx)*.([jt]sx)", {
@@ -25,6 +25,7 @@ export default function App() {
 
             {/* Main content area */}
             <div className="main-content">
+              <TopBar />
               <Routes pages={pages} />
             </div>
           </div>
