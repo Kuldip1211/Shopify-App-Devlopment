@@ -2,7 +2,7 @@
 
 client_id = "38690d484326624b5cf86a72a94e2016"
 name = "wish"
-application_url = "https://69d2f5bfa4ee.ngrok-free.app"
+application_url = "https://8898745d318a.ngrok-free.app"
 embedded = true
 handle = "wish-35"
 
@@ -18,7 +18,7 @@ api_version = "2025-07"
 scopes = "write_products,read_products,read_orders"
 
 [auth]
-redirect_urls = ["https://69d2f5bfa4ee.ngrok-free.app/auth/callback", "https://69d2f5bfa4ee.ngrok-free.app/auth/shopify/callback", "https://69d2f5bfa4ee.ngrok-free.app/api/auth/callback"]
+redirect_urls = ["https://8898745d318a.ngrok-free.app/auth/callback", "https://8898745d318a.ngrok-free.app/auth/shopify/callback", "https://8898745d318a.ngrok-free.app/api/auth/callback"]
 
 [pos]
 embedded = false

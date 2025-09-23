@@ -63,6 +63,14 @@ app.get("/api/collections/count", async(_req,res) => {
   res.status(200).send(countData);
 });
 
+// reading orders
+app.get("/api/orders/all",async (_req,res)=>{
+  const CountData = await shopify.api.rest.Order.all({
+    session : res.locals.shopify.session,
+    status  : "any"
+  })
+  res.status(200).send(CountData);
+})
 
 app.post("/api/products", async (_req, res) => {
   let status = 200;

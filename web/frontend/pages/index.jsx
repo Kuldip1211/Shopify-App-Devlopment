@@ -2,10 +2,16 @@ import { Layout, LegacyCard, Page } from "@shopify/polaris";
 import { Card, OrderDetails, OrderGraphs } from "../components";
 import "./index.css";
 import { useEffect, useState } from "react";
+// import { Item } from "@shopify/polaris/build/ts/latest/src/components/ActionList/components";
 
 export default function HomePage() {
   let [count, setCount] = useState(0);
   let [Collectioncount, setCollectionCount] = useState(0);
+  let [Orders , setOrders] = useState(0)
+  let [Fullfield , setFullfield] = useState(0)
+  let [Remaing , setRemaing] = useState(0)
+
+
 
   async function TotalProductCount() {
     try {
@@ -20,7 +26,7 @@ export default function HomePage() {
 
   async function TotalCollection(){
         try {
-      // fetch Total Product Count
+      // fetch Total Collection Count
       let request = await fetch("/api/collections/count");
       let responce = await request.json();
       setCollectionCount(responce.count);
@@ -29,9 +35,24 @@ export default function HomePage() {
     }
   }
 
+  // Fetch All Order Count
+  async function TotalOrders(){
+    try{
+       let request = await fetch("/api/orders/count");
+    let response = await request.json();
+    setOrders(response.count);
+    let fullfieldorders = response.data.filter(Item => Item.fulfillment_status === 'fulfilled');
+    setFullfield(fullfieldorders.length);
+    setRemaing(response.count - fullfieldorders.length);
+    }catch(e){
+      console.log(e)
+    }
+  }
+
   useEffect(()=>{
     TotalProductCount();
     TotalCollection();
+    TotalOrders();
   }, []);
 
   return (
@@ -42,9 +63,9 @@ export default function HomePage() {
         </div>
         <div className="card-section">
           <Layout>
-            <Card title="Total Orders" />
-            <Card title="Fulfilled Orders" />
-            <Card title="Remaining Orders" />
+            <Card title="Total Orders" data={Orders} orderCard />
+            <Card title="Fulfilled Orders" data={Fullfield} fulfillCard />
+            <Card title="Remaining Orders" data={Remaing} remainsCard />
             <Card title="Total Product" data={count} productCard />
             <Card title="Total Collection" data={Collectioncount} collectionCard />
           </Layout>
