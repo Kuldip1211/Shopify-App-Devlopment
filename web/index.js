@@ -47,20 +47,12 @@ app.get("/api/store/info", async(req, res) => {
   res.status(200).send(storeInfo);
 })
 
-app.get("/api/products/count", async (_req, res) => {
-  const client = new shopify.api.clients.Graphql({
-    session: res.locals.shopify.session,
-  });
 
-  const countData = await client.request(`
-    query shopifyProductCount {
-      productsCount {
-        count
-      }
-    }
-  `);
-
-  res.status(200).send({ count: countData.data.productsCount.count });
+app.get("/api/products/count", async(_req,res) => {
+  const countData = await shopify.api.rest.Product.count({
+    session : res.locals.shopify.session,
+  })
+  res.status(200).send(countData);
 });
 
 app.post("/api/products", async (_req, res) => {
