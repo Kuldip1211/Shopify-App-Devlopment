@@ -4,21 +4,35 @@ import "./index.css";
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
+  let [count, setCount] = useState(0);
+  let [Collectioncount, setCollectionCount] = useState(0);
 
-  let [ count , setCount] = useState(0);
-
-
-  useEffect(async()=>{
-     try{
-      let request =  await fetch("/api/products/count");
+  async function TotalProductCount() {
+    try {
+      // fetch Total Product Count
+      let request = await fetch("/api/products/count");
       let responce = await request.json();
       setCount(responce.count);
-    }catch(e){
-      alert("Error " + e)
+    } catch (e) {
+      alert("Error " + e);
     }
-  },[])
+  }
 
+  async function TotalCollection(){
+        try {
+      // fetch Total Product Count
+      let request = await fetch("/api/collections/count");
+      let responce = await request.json();
+      setCollectionCount(responce.count);
+    } catch (e) {
+      alert("Error " + e);
+    }
+  }
 
+  useEffect(()=>{
+    TotalProductCount();
+    TotalCollection();
+  }, []);
 
   return (
     <Page fullWidth>
@@ -31,8 +45,8 @@ export default function HomePage() {
             <Card title="Total Orders" />
             <Card title="Fulfilled Orders" />
             <Card title="Remaining Orders" />
-            <Card title="Total Product" data={count} productCard/>
-            <Card title="Total Collection" />
+            <Card title="Total Product" data={count} productCard />
+            <Card title="Total Collection" data={Collectioncount} collectionCard />
           </Layout>
         </div>
         <div className="order-details-section">
