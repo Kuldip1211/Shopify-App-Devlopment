@@ -1,12 +1,15 @@
-import { Page } from '@shopify/polaris'
-import React from 'react'
+
+import React from "react";
+import { Page } from '@shopify/polaris';
+
+
 
 function Menu() {
   return (
     <Page>
-        Menu
+      menu
     </Page>
-  )
+  );
 }
 
-export default Menu
+export default Menu;

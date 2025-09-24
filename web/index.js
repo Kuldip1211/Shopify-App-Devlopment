@@ -72,18 +72,11 @@ app.get("/api/orders/all",async (_req,res)=>{
   res.status(200).send(CountData);
 })
 
-app.post("/api/products", async (_req, res) => {
-  let status = 200;
-  let error = null;
-
-  try {
-    await productCreator(res.locals.shopify.session);
-  } catch (e) {
-    console.log(`Failed to process products/create: ${e.message}`);
-    status = 500;
-    error = e.message;
-  }
-  res.status(status).send({ success: status === 200, error });
+app.get("/api/products", async (_req, res) => {
+   const CountData = await shopify.api.rest.Product.all({
+    session : res.locals.shopify.session
+   })
+   res.status(200).send(CountData); 
 });
 
 app.use(shopify.cspHeaders());
@@ -96,7 +89,7 @@ app.use("/*", shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
     .send(
       readFileSync(join(STATIC_PATH, "index.html"))
         .toString()
-        .replace("%VITE_SHOPIFY_API_KEY%", process.env.SHOPIFY_API_KEY || "")
+        .replace("%VITE_SHOPIFY_API_KEY%","64a9c66be9b592ca5c0b0a68bf54e560")
     );
 });
 
