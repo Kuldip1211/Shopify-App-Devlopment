@@ -1,0 +1,85 @@
+.app-form {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    margin: 24px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    background: #fff;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+  .app-form h2 {
+    margin: 0 0 14px;
+    font-size: 20px;
+    color: #111827;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+  }
+
+  .field label {
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #374151;
+  }
+
+  .field input[type="text"],
+  .field input[type="email"] {
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+
+  .field input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37,99,235,0.08);
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+  }
+
+  .msg {
+    font-size: 14px;
+    color: #065f46;
+    margin-left: 8px;
+  }
+
+  #appForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* small screens */
+  @media (max-width: 420px) {
+    .app-form { padding: 16px; margin: 12px; }
+  }

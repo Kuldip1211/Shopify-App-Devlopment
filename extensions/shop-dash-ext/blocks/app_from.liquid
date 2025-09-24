@@ -1,0 +1,42 @@
+<div class="app-form" id="appFormContainer" role="region" aria-labelledby="appFormTitle">
+  <h2 id="appFormTitle">{{ block.settings.form-title }}</h2>
+
+  <form id="appForm" novalidate>
+    <div class="field">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" required minlength="2" placeholder="Enter your name" />
+      <small class="error" aria-live="polite" style="color:#b91c1c; display:none;"></small>
+    </div>
+
+    <div class="field">
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" required placeholder="you@example.com" />
+      <small class="error" aria-live="polite" style="color:#b91c1c; display:none;"></small>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn" type="submit" id="submitBtn">Submit</button>
+      <div class="msg" id="formMessage" aria-live="polite"></div>
+    </div>
+  </form>
+</div>
+
+{% schema %}
+{
+
+    "name": "App Registration Form",
+    "target" : "section",
+    "class" : "app-dashboard-form",
+    "stylesheet" : "app-form.css",
+    "javascript" : "app-form.js",
+    "settings" : [
+        {
+            "type" : "text",
+            "id"   :  "form-title",
+            "label" :  "App From title"
+        }
+    ]
+
+    
+}
+{% endschema %}
